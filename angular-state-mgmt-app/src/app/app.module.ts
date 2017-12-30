@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { Router, RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -13,6 +14,12 @@ import { HomeComponent } from './components/home/home.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { ContactUsComponent } from './components/contact-us/contact-us.component';
 
+const appRoutes: Routes = [
+  { pathMatch: 'full',  path: '', component: HomeComponent },
+  { pathMatch: 'full',  path: 'houses', component: HouseListComponent },
+  { pathMatch: 'full',  path: 'contact', component: ContactUsComponent },
+  { pathMatch: 'full',  path: '**', component: PageNotFoundComponent }
+]
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +35,8 @@ import { ContactUsComponent } from './components/contact-us/contact-us.component
     ContactUsComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [],
   bootstrap: [AppComponent]

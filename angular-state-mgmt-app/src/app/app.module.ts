@@ -13,6 +13,13 @@ import { FooterComponent } from './components/footer/footer.component';
 import { HomeComponent } from './components/home/home.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { ContactUsComponent } from './components/contact-us/contact-us.component';
+import { CustomerAddComponent } from './components/customers/customer-add/customer-add.component';
+import { CustomerEditComponent } from './components/customers/customer-edit/customer-edit.component';
+import { CustomerListComponent } from './components/customers/customer-list/customer-list.component';
+import { CustomerThumbnailComponent } from './components/customers/customer-thumbnail/customer-thumbnail.component';
+import { CustomerDetailComponent } from './components/customers/customer-detail/customer-detail.component';
+
+import { CustomerService } from './services/customer.service';
 
 const appRoutes: Routes = [
   { pathMatch: 'full',  path: '', component: HomeComponent },
@@ -32,13 +39,18 @@ const appRoutes: Routes = [
     FooterComponent,
     HomeComponent,
     PageNotFoundComponent,
-    ContactUsComponent
+    ContactUsComponent,
+    CustomerAddComponent,
+    CustomerEditComponent,
+    CustomerListComponent,
+    CustomerThumbnailComponent,
+    CustomerDetailComponent
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [],
+  providers: [customerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

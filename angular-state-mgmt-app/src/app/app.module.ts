@@ -23,6 +23,8 @@ import { CustomerService } from './services/customer.service';
 
 const appRoutes: Routes = [
   { pathMatch: 'full',  path: '', component: HomeComponent },
+  { pathMatch: 'full',  path: 'customers', component: CustomerListComponent },
+  { pathMatch: 'full',  path: 'customers/:id', component: CustomerDetailComponent },
   { pathMatch: 'full',  path: 'houses', component: HouseListComponent },
   { pathMatch: 'full',  path: 'contact', component: ContactUsComponent },
   { pathMatch: 'full',  path: '**', component: PageNotFoundComponent }
@@ -50,7 +52,7 @@ const appRoutes: Routes = [
     BrowserModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [customerService],
+  providers: [CustomerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

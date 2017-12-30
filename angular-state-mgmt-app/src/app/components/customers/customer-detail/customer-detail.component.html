@@ -1,3 +1,27 @@
-<p>
-  customer-detail works!
-</p>
+<h1>Customer</h1>
+
+<div class="container">
+  <div class="row">
+  
+    <div class="col-12">
+      <span class="customerId">{{ customer.id }}</span> <span class="customerName">{{ customer.firstName }} {{ customer.lastName }}</span>
+        <div style="float:right;">
+            <a class="btn btn-warning" [routerLink]="['/customers/' + customer.id + '/edit']">Edit</a>
+            <!-- <button class="btn btn-warning" (click)="edit(speaker.id)">Edit</button>
+             -->
+            <button class="btn btn-danger" (click)="delete(customer.id)">Delete</button>
+        </div> <br/>
+
+        <div *ngIf="customer.orders?.length > 0">
+            <h4>Order<span *ngIf="customer.orders?.length > 1">s</span></h4>
+            <div *ngFor="let order of customer.orders">
+                <p>
+                    <strong>Title:</strong> {{ session.title }}<br />
+                    <strong>Description:</strong> {{ session.description }}
+                </p>
+            </div>
+
+        </div>
+    </div>
+  </div>
+</div>

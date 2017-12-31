@@ -1,16 +1,17 @@
 <h1>Customers</h1>
 <div class="container">
-    <a class="btn btn-primary" [routerLink]="['/customers/new']">Add Customer</a>
-    <button class="btn btn-warning" (click)="seedCustomers()">Reset Customers</button>   
+    <!-- <a class="btn btn-primary" [routerLink]="['/customers/new']">Add Customer</a> -->
+    <a class="btn btn-primary" (click)="addCustomerClick()">Add Customer</a>
 </div>
 <hr>
 <div class="clearfix"></div>
 <div *ngFor="let customer of customers; let i = index">
-    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6 text-left">
-      {{customer.id}} 
+    <div class="row">
+      {{customer.id}}.&nbsp; 
       <a [routerLink]="['/customers/' + customer.id]">
         <span class="customerName">{{ customer.firstName }} {{ customer.lastName }}</span> 
-      </a> <br />
+      </a> 
+      &nbsp;({{ customer.orders.length }} orders)
     </div>
    
     <div class="clearfix visible-lg" *ngIf="(i + 1) % 4 == 0"></div>

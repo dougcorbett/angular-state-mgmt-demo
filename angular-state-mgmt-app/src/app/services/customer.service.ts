@@ -1,16 +1,17 @@
 import { Injectable } from '@angular/core';
+
 import { Customer } from '../models/Customer';
 
 @Injectable()
 export class CustomerService {
 
+  customers:Array<Customer> = new Array<Customer>();
+
   constructor() { }
 
-  getAllCustomers(): Array<Customer> 
-  {
-    let customers:Array<Customer> = new Array<Customer>();
-
-    customers = [
+  seedCustomers() {
+console.log('seedCustomers')
+    this.customers = [
       { 
         id: 1,
         firstName: "Tom", 
@@ -139,8 +140,75 @@ export class CustomerService {
                     ] 
             }
     ];
+    
+    localStorage.setItem('customers', JSON.stringify(this.customers));
 
-    return customers;
+  }
+
+  getCustomers(): Customer[] 
+  {
+console.log('getCustomers')
+    if (localStorage.getItem('customers') === null) { this.customers = []; }
+    else { this.customers = JSON.parse(localStorage.getItem('customers')); }
+    return this.customers;
+  }
+
+  getCustomer(id:number): Customer
+  {
+console.log('getCustomer')
+    for(let i = 0; i < this.customers.length; i++)
+    {
+      if(this.customers[i].id == id) { 
+        return this.customers[i]; 
+      }
+    };
+    return null;
+  }
+
+  addCustomer(customer:Customer){
+
+console.log('addCustomer')
+
+    let customers;
+  
+    if(localStorage.getItem('customers') === null) { customers = []; }
+    else { customers = JSON.parse(localStorage.getItem('customers')); }
+
+    customer.id = this.getMaxCustomerID(customers);
+
+    customers.unshift(customer);
+
+    localStorage.setItem('customers', JSON.stringify(customers));
+  }
+
+  getMaxCustomerID(customers:Customer[]): number
+  {
+console.log('getMaxCustomerID')
+    let nextId = 0;
+
+    for(let i = 0; i < customers.length; i++) 
+    {
+      if(customers[i].id >= nextId) {
+        nextId = customers[i].id + 1;
+      }
+    }
+    return nextId;
+  }
+
+  removeCustomer(id:number) {
+
+    console.log('removeCustomer')
+
+    let customers = JSON.parse(localStorage.getItem('customers'));
+
+    for(let i = 0; i < customers.length; i++)
+    {
+      if(customers[i].id === id) 
+      {
+        customers.splice(i, 1);
+        localStorage.setItem('customers', JSON.stringify(customers));
+      }
+    };
   }
 
 }

@@ -20,11 +20,15 @@ import { CustomerThumbnailComponent } from './components/customers/customer-thum
 import { CustomerDetailComponent } from './components/customers/customer-detail/customer-detail.component';
 
 import { CustomerService } from './services/customer.service';
+import { SeedDataComponent } from './components/admin/seed-data/seed-data.component';
+import { CustomerOrderListComponent } from './components/customers/customer-orders/customer-order-list/customer-order-list.component';
+import { CustomerOrderDetailComponent } from './components/customers/customer-orders/customer-order-detail/customer-order-detail.component';
 
 const appRoutes: Routes = [
   { pathMatch: 'full',  path: '', component: HomeComponent },
   { pathMatch: 'full',  path: 'customers', component: CustomerListComponent },
   { pathMatch: 'full',  path: 'customers/:id', component: CustomerDetailComponent },
+  { pathMatch: 'full',  path: 'seed-data', component: SeedDataComponent },
   { pathMatch: 'full',  path: 'houses', component: HouseListComponent },
   { pathMatch: 'full',  path: 'contact', component: ContactUsComponent },
   { pathMatch: 'full',  path: '**', component: PageNotFoundComponent }
@@ -46,7 +50,10 @@ const appRoutes: Routes = [
     CustomerEditComponent,
     CustomerListComponent,
     CustomerThumbnailComponent,
-    CustomerDetailComponent
+    CustomerDetailComponent,
+    SeedDataComponent,
+    CustomerOrderListComponent,
+    CustomerOrderDetailComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,25 @@
+.customerId {
+    font-size: 24px;
+    text-transform: uppercase;
+    margin-right:10px;
+}
+.customerName
+{
+    color: gold;
+    font-size: 24px;
+    text-transform: uppercase;
+}
+h1 {
+    text-align: center;
+}
+.tableLabel {
+    font-weight: bold;
+    display:inline-block;
+    width:100px;
+    text-align: left;
+}
+.tableValue {
+    display:inline-block;
+    width:100px;
+    text-align: right;
+}

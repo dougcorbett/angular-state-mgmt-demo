@@ -19,14 +19,18 @@ import { CustomerListComponent } from './components/customers/customer-list/cust
 import { CustomerThumbnailComponent } from './components/customers/customer-thumbnail/customer-thumbnail.component';
 import { CustomerDetailComponent } from './components/customers/customer-detail/customer-detail.component';
 
-import { CustomerService } from './services/customer.service';
-import { SeedDataComponent } from './components/admin/seed-data/seed-data.component';
 import { CustomerOrderListComponent } from './components/customers/customer-orders/customer-order-list/customer-order-list.component';
 import { CustomerOrderDetailComponent } from './components/customers/customer-orders/customer-order-detail/customer-order-detail.component';
+
+import { SeedDataComponent } from './components/admin/seed-data/seed-data.component';
+
+import { CustomerService } from './services/customer.service';
+import { GoBackButtonComponent } from './components/go-back-button/go-back-button.component';
 
 const appRoutes: Routes = [
   { pathMatch: 'full',  path: '', component: HomeComponent },
   { pathMatch: 'full',  path: 'customers', component: CustomerListComponent },
+  { pathMatch: 'full',  path: 'customers/new', component: CustomerAddComponent },
   { pathMatch: 'full',  path: 'customers/:id', component: CustomerDetailComponent },
   { pathMatch: 'full',  path: 'seed-data', component: SeedDataComponent },
   { pathMatch: 'full',  path: 'houses', component: HouseListComponent },
@@ -50,10 +54,11 @@ const appRoutes: Routes = [
     CustomerEditComponent,
     CustomerListComponent,
     CustomerThumbnailComponent,
-    CustomerDetailComponent,
-    SeedDataComponent,
+    CustomerDetailComponent,    
     CustomerOrderListComponent,
-    CustomerOrderDetailComponent
+    CustomerOrderDetailComponent,
+    SeedDataComponent,
+    GoBackButtonComponent
   ],
   imports: [
     BrowserModule,

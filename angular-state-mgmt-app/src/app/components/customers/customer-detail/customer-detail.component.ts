@@ -18,12 +18,15 @@ export class CustomerDetailComponent implements OnInit {
     private route:ActivatedRoute, 
     private router:Router
   ) { 
-    this.route.params.subscribe((params:Params) => {
-      this.customer = customerService.getCustomer(params.id);
-    });
+    console.log("constructor");
   }
 
   ngOnInit() {
+    console.log("initialize");
+    this.route.params.subscribe((params:Params) => {
+      console.log("params.id", params.id);
+      this.customer = this.customerService.getCustomer(params.id);
+    });
   }
 
   delete(id:number) {

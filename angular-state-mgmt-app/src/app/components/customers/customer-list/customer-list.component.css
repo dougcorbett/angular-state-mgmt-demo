@@ -1,3 +1,7 @@
+.customerId {
+    display:inline-block;
+    width:30px;
+}
 .customerName
 {
     color: gold;

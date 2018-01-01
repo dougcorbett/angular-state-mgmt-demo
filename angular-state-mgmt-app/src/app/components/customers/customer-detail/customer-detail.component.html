@@ -1,13 +1,4 @@
-<div class="row">
-  <div class="col-6">
-    <a href="#" routerLink="/customers" class="btn btn-link">
-      <i class="fa fa-arrow-circle-o-left"></i> Back
-    </a>
-  </div>
-  <div class="col-6">
-    
-  </div>
-</div>
+<app-go-back-button backRoute="/customers"></app-go-back-button>
 
 <h1>Customer</h1>
 
@@ -15,60 +6,14 @@
   <div class="row">
   
     <div class="col-12">
-      <span class="customerId">{{ customer.id }}</span> <span class="customerName">{{ customer.firstName }} {{ customer.lastName }}</span>
+      <span class="customerId">{{ customer?.id }}</span> <span class="customerName">{{ customer?.firstName }} {{ customer?.lastName }}</span>
       <div style="float:right;">
-          <a class="btn btn-warning btn-sm" [routerLink]="['/customers/' + customer.id + '/edit']">Edit</a>
+          <!-- <a class="btn btn-warning btn-sm" [routerLink]="['/customers/' + customer.id + '/edit']">Edit</a> -->
           <button class="btn btn-danger btn-sm" (click)="delete(customer.id)">Delete</button>
       </div> <br/>
 
-      <div *ngIf="customer.orders?.length > 0">
-          <h4>Order<span *ngIf="customer.orders?.length > 1">s</span></h4>
-          
-          <div *ngFor="let order of customer.orders; let i = index">
-              
-            <div style="border: solid 1px lightgrey; padding: 15px; margin-bottom: 10px; border-radius: 5px;" >
+      <app-customer-order-list [orders]="customer?.orders" ></app-customer-order-list>
 
-              <div class="row" style="margin-bottom:10px;">
-                <div class="col-6">
-                  <span class="tableLabel">Order ID:</span> {{ order.id }}<br />
-                  <span class="tableLabel">Order Date:</span> {{ order.orderDate | date:"shortDate" }}      
-                </div>
-                <div class="col-6">
-                  <div style="text-align: right;">
-                    <span class="tableLabel">Total Cost:</span><span class="tableValue">{{ order.totalCost | currency:'USD':'sybmol':'1.2-4' }}</span><br />
-                    <span class="tableLabel">Tax:</span><span class="tableValue">{{ order.tax | currency:'USD':'sybmol':'1.2-4' }}</span><br />
-                    <span class="tableLabel">Discount:</span><span class="tableValue">{{ order.discount | currency:'USD':'sybmol':'1.2-4' }}</span><br />
-                    <span class="tableLabel">Order Total:</span><span class="tableValue">{{ order.orderTotal | currency:'USD':'sybmol':'1.2-4' }}</span><br />
-                  </div>
-                </div>
-              </div>
-          
-              <div class="row">
-                <table class="table table-striped">
-                  <thead class="thead-dark">
-                    <th>ID</th>
-                    <th>Number</th>
-                    <th>Description</th>
-                    <th>Qty</th>
-                    <th>Item Cost</th>
-                    <th>Total Cost</th>
-                  </thead>
-
-                  <tr *ngFor="let item of order.lineItems">
-                    <td>{{ item.id }}</td>
-                    <td>{{ item.productNumber }}</td>
-                    <td>{{ item.productDescription }}</td>
-                    <td>{{ item.quantity }}</td>
-                    <td>{{ item.itemCost }}</td>
-                    <td>{{ item.totalCost }}</td>
-                  </tr>
-                </table>
-              </div>
-            
-            </div>
-        </div>
-
-      </div>
     </div>
   </div>
 </div>

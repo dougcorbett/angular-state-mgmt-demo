@@ -1,3 +1,9 @@
-<p>
-  customer-add works!
-</p>
+<h1>Customers</h1>
+<div class="container">
+    <!-- <a class="btn btn-primary" [routerLink]="['/customers/new']">Add Customer</a> -->
+    <a class="btn btn-primary" (click)="addCustomerClick()">Add Customer</a>
+</div>
+<hr>
+<div>
+  <pre>{{ customer | json }}</pre>    
+</div>

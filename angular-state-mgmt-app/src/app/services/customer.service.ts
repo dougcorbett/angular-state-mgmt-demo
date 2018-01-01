@@ -156,10 +156,13 @@ console.log('getCustomers')
   getCustomer(id:number): Customer
   {
 console.log('getCustomer')
-    for(let i = 0; i < this.customers.length; i++)
+
+    let customers = JSON.parse(localStorage.getItem('customers'));;
+
+    for(let i = 0; i < customers.length; i++)
     {
-      if(this.customers[i].id == id) { 
-        return this.customers[i]; 
+      if(customers[i].id == id) { 
+        return customers[i]; 
       }
     };
     return null;
@@ -169,10 +172,10 @@ console.log('getCustomer')
 
 console.log('addCustomer')
 
-    let customers;
+    let customers = JSON.parse(localStorage.getItem('customers'));;
   
-    if(localStorage.getItem('customers') === null) { customers = []; }
-    else { customers = JSON.parse(localStorage.getItem('customers')); }
+    // if(localStorage.getItem('customers') === null) { customers = []; }
+    // else { customers = JSON.parse(localStorage.getItem('customers')); }
 
     customer.id = this.getMaxCustomerID(customers);
 

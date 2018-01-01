@@ -1,0 +1,11 @@
+.tableLabel {
+    font-weight: bold;
+    display:inline-block;
+    width:100px;
+    text-align: left;
+}
+.tableValue {
+    display:inline-block;
+    width:100px;
+    text-align: right;
+}

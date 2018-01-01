@@ -1,48 +1,8 @@
 <div *ngIf="orders?.length > 0">
-    <h4>Order<span *ngIf="orders?.length > 1">s</span></h4>
-    
-    <div *ngFor="let order of orders; let i = index">
-        
-      <div style="border: solid 1px lightgrey; padding: 15px; margin-bottom: 10px; border-radius: 5px;" >
-
-        <div class="row" style="margin-bottom:10px;">
-          <div class="col-6">
-            <span class="tableLabel">Order ID:</span> {{ order.id }}<br />
-            <span class="tableLabel">Order Date:</span> {{ order.orderDate | date:"shortDate" }}      
-          </div>
-          <div class="col-6">
-            <div style="text-align: right;">
-              <span class="tableLabel">Total Cost:</span><span class="tableValue">{{ order.totalCost | currency:'USD':'sybmol':'1.2-4' }}</span><br />
-              <span class="tableLabel">Tax:</span><span class="tableValue">{{ order.tax | currency:'USD':'sybmol':'1.2-4' }}</span><br />
-              <span class="tableLabel">Discount:</span><span class="tableValue">{{ order.discount | currency:'USD':'sybmol':'1.2-4' }}</span><br />
-              <span class="tableLabel">Order Total:</span><span class="tableValue">{{ order.orderTotal | currency:'USD':'sybmol':'1.2-4' }}</span><br />
-            </div>
-          </div>
-        </div>
-    
-        <div class="row">
-          <table class="table table-striped">
-            <thead class="thead-dark">
-              <th>ID</th>
-              <th>Number</th>
-              <th>Description</th>
-              <th>Qty</th>
-              <th>Item Cost</th>
-              <th>Total Cost</th>
-            </thead>
-
-            <tr *ngFor="let item of order.lineItems">
-              <td>{{ item.id }}</td>
-              <td>{{ item.productNumber }}</td>
-              <td>{{ item.productDescription }}</td>
-              <td>{{ item.quantity }}</td>
-              <td>{{ item.itemCost }}</td>
-              <td>{{ item.totalCost }}</td>
-            </tr>
-          </table>
-        </div>
-      
-      </div>
+  <h4>Order<span *ngIf="orders?.length > 1">s</span></h4>
+  
+  <div class="divOrder" *ngFor="let order of orders; let i = index">
+    <app-customer-order-detail [order]="order"></app-customer-order-detail>
   </div>
 
 </div>

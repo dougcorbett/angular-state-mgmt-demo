@@ -35,4 +35,30 @@ export class CustomerDetailComponent implements OnInit {
       this.router.navigate(['customers']);
     }
   }
+
+  handleQtyChanged(customerId, data) {
+    console.log("handleQtyChanged", data)
+    let customer = this.customerService.getCustomer(customerId)
+    let orders = customer.orders;
+
+    for(let i = 0; i < orders.length; i++) 
+    {
+      console.log("i",i)
+      if (orders[i].id == data.orderId) {
+        for(let x = 0; x < orders[i].lineItems.length; x++) 
+        {
+          console.log("x",x)
+          if (orders[i].lineItems[x].id == data.lineitemId) {
+            orders[i].lineItems[x].quantity = data.newValue;
+            break;
+          }
+        }
+        break;
+      }
+    }
+    console.log("xxxx",customerId, customer)
+    this.customerService.updateCustomer(customerId, customer);
+    this.customer = this.customerService.getCustomer(customerId)
+    //this.router.navigate(['customers/' + customerId ]);  
+  }
 }

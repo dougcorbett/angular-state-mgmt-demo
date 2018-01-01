@@ -175,6 +175,7 @@ console.log('addCustomer')
     let customers = JSON.parse(localStorage.getItem('customers'));
   
     customer.id = this.getMaxCustomerID(customers);
+console.log('new id', customer.id)
 
     customers.unshift(customer);
 

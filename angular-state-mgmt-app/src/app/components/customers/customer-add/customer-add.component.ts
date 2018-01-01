@@ -21,7 +21,7 @@ export class CustomerAddComponent implements OnInit {
         orderDate: new Date(),
         lineItems: [
           { id: 1, productNumber: 'aaa', productDescription: 'ssss', quantity: 3, itemCost: 12.11, totalCost: 45.33 },
-          { id: 1, productNumber: 'ccc', productDescription: 'ffff', quantity: 1, itemCost: 12.11, totalCost: 145.33 }
+          { id: 2, productNumber: 'ccc', productDescription: 'ffff', quantity: 1, itemCost: 12.11, totalCost: 145.33 }
         ],
         totalCost: 2001.03,
         tax: 200.01,

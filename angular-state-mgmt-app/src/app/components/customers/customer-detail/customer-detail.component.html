@@ -12,7 +12,7 @@
           <button class="btn btn-danger btn-sm" (click)="delete(customer.id)">Delete</button>
       </div> <br/>
 
-      <app-customer-order-list [orders]="customer?.orders" ></app-customer-order-list>
+      <app-customer-order-list [orders]="customer?.orders" (qtyChanged)="handleQtyChanged(customer?.id, $event)" ></app-customer-order-list>
 
     </div>
   </div>

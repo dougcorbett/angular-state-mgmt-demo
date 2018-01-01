@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 import { Order } from '../../../../models/Customer'
 
@@ -10,10 +10,28 @@ import { Order } from '../../../../models/Customer'
 export class CustomerOrderDetailComponent implements OnInit {
 
   @Input() order: Order;
+  @Output() increaseQtyClicked = new EventEmitter();
+  @Output() decreaseQtyClicked = new EventEmitter();
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  increaseQty(lineitemId: number, currentValue: number) {
+    let data = {
+      'lineitemId': lineitemId,
+      'currentValue': currentValue
+    };
+    this.increaseQtyClicked.emit(data)
+  }
+
+  decreaseQty(lineitemId: number, currentValue: number) {
+    let data = {
+      'lineitemId': lineitemId,
+      'currentValue': currentValue
+    };
+    this.decreaseQtyClicked.emit(data)
   }
 
 }

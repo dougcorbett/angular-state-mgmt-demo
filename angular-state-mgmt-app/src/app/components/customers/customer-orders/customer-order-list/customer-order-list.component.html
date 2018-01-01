@@ -2,7 +2,9 @@
   <h4>Order<span *ngIf="orders?.length > 1">s</span></h4>
   
   <div class="divOrder" *ngFor="let order of orders; let i = index">
-    <app-customer-order-detail [order]="order"></app-customer-order-detail>
+    <app-customer-order-detail [order]="order" 
+      (increaseQtyClicked)="handleIncreaseQtyClicked(order.id, $event)"
+      (decreaseQtyClicked)="handleDecreaseQtyClicked(order.id, $event)"></app-customer-order-detail>
   </div>
 
 </div>

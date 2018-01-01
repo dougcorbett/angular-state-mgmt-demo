@@ -8,7 +8,7 @@
     <div class="col-12">
       <span class="customerId">{{ customer?.id }}</span> <span class="customerName">{{ customer?.firstName }} {{ customer?.lastName }}</span>
       <div style="float:right;">
-          <!-- <a class="btn btn-warning btn-sm" [routerLink]="['/customers/' + customer.id + '/edit']">Edit</a> -->
+          <a class="btn btn-warning btn-sm" [routerLink]="['/customers/' + customer.id + '/edit']">Edit</a>
           <button class="btn btn-danger btn-sm" (click)="delete(customer.id)">Delete</button>
       </div> <br/>
 

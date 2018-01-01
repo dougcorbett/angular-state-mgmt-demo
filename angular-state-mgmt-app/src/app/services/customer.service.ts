@@ -172,11 +172,8 @@ console.log('getCustomer')
 
 console.log('addCustomer')
 
-    let customers = JSON.parse(localStorage.getItem('customers'));;
+    let customers = JSON.parse(localStorage.getItem('customers'));
   
-    // if(localStorage.getItem('customers') === null) { customers = []; }
-    // else { customers = JSON.parse(localStorage.getItem('customers')); }
-
     customer.id = this.getMaxCustomerID(customers);
 
     customers.unshift(customer);
@@ -212,6 +209,35 @@ console.log('getMaxCustomerID')
         localStorage.setItem('customers', JSON.stringify(customers));
       }
     };
+  }
+
+  updateCustomer(id:number, customer:Object){
+    
+    let customers = JSON.parse(localStorage.getItem('customers'));
+
+    let index = this.getIndexForId(id, customers);
+
+    if (index == -1) {
+      customers.unshift(customer);
+    } else {
+      Object.assign(customers[index], customer);
+    }
+    
+    localStorage.setItem('customers', JSON.stringify(customers));
+  }
+
+  getIndexForId(id:number, customers:Customer[]): number 
+  {
+    let result = -1;
+
+    for(let i = 0; i < customers.length; i++) 
+    {
+      if(customers[i].id == id) {
+        result = i;
+        break;
+      }
+    }
+    return result;
   }
 
 }

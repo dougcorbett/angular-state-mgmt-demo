@@ -32,6 +32,7 @@ const appRoutes: Routes = [
   { pathMatch: 'full',  path: 'customers', component: CustomerListComponent },
   { pathMatch: 'full',  path: 'customers/new', component: CustomerAddComponent },
   { pathMatch: 'full',  path: 'customers/:id', component: CustomerDetailComponent },
+  { pathMatch: 'full',  path: 'customers/:id/edit', component: CustomerEditComponent },
   { pathMatch: 'full',  path: 'seed-data', component: SeedDataComponent },
   { pathMatch: 'full',  path: 'houses', component: HouseListComponent },
   { pathMatch: 'full',  path: 'contact', component: ContactUsComponent },

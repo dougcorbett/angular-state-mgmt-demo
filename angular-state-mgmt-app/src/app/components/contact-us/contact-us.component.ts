@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { CustomerService } from '../../services/customer.service';
 
+import { Customer } from '../../models/Customer'
 @Component({
   selector: 'app-contact-us',
   templateUrl: './contact-us.component.html',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ContactUsComponent implements OnInit {
 
-  constructor() { }
+  customers: Array<Customer>;
+
+  constructor(private customerService: CustomerService) { }
 
   ngOnInit() {
+    this.customers = this.customerService.getCustomers();
   }
 
 }

@@ -147,15 +147,27 @@ console.log('seedCustomers')
 
   getCustomers(): Customer[] 
   {
-console.log('getCustomers')
-    if (localStorage.getItem('customers') === null) { this.customers = []; }
-    else { this.customers = JSON.parse(localStorage.getItem('customers')); }
+console.log('getCustomers', this.customers)
+
+    if (this.customers.length == 0) {
+      if (localStorage.getItem('customers') === null) { 
+        this.customers = [];
+        console.log("initializing empty array of customers.", this.customers) 
+      }
+      else { 
+        this.customers = JSON.parse(localStorage.getItem('customers')); 
+        console.log("getting state from local storage.", this.customers) 
+      }
+    }
+    else {
+      console.log("getting cached array of customers from singleton service.", this.customers)
+    }
     return this.customers;
   }
 
   getCustomer(id:number): Customer
   {
-console.log('getCustomer')
+    console.log('getCustomer')
 
     let customers = JSON.parse(localStorage.getItem('customers'));;
 
@@ -170,21 +182,22 @@ console.log('getCustomer')
 
   addCustomer(customer:Customer){
 
-console.log('addCustomer')
+    console.log('addCustomer')
 
     let customers = JSON.parse(localStorage.getItem('customers'));
   
     customer.id = this.getMaxCustomerID(customers);
-console.log('new id', customer.id)
+    console.log('new id', customer.id)
 
     customers.unshift(customer);
 
     localStorage.setItem('customers', JSON.stringify(customers));
+    this.customers = JSON.parse(localStorage.getItem('customers')); 
   }
 
   getMaxCustomerID(customers:Customer[]): number
   {
-console.log('getMaxCustomerID')
+    console.log('getMaxCustomerID')
     let nextId = 0;
 
     for(let i = 0; i < customers.length; i++) 
@@ -208,6 +221,7 @@ console.log('getMaxCustomerID')
       {
         customers.splice(i, 1);
         localStorage.setItem('customers', JSON.stringify(customers));
+        this.customers = JSON.parse(localStorage.getItem('customers')); 
       }
     };
   }
@@ -225,6 +239,7 @@ console.log('getMaxCustomerID')
     }
     
     localStorage.setItem('customers', JSON.stringify(customers));
+    this.customers = JSON.parse(localStorage.getItem('customers')); 
   }
 
   getIndexForId(id:number, customers:Customer[]): number 

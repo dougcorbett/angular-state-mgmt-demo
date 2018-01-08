@@ -1,0 +1,10 @@
+.customerId {
+    display:inline-block;
+    width:30px;
+}
+.customerName
+{
+    color: gold;
+    font-size: 18px;
+    text-transform: uppercase;
+}

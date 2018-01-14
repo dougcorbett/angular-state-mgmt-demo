@@ -1,8 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, isDevMode } from '@angular/core';
 import { Router, RouterModule, Routes } from '@angular/router';
+import { NgRedux, NgReduxModule, DevToolsExtension } from 'ng2-redux'
 
 import { AppComponent } from './app.component';
+import { IAppState, rootReducer, INITIAL_STATE } from './store'
+
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HomeComponent } from './components/home/home.component';
@@ -71,9 +74,17 @@ const appRoutes: Routes = [
   ],
   imports: [
     BrowserModule,
+    NgReduxModule,
     RouterModule.forRoot(appRoutes)
   ],
   providers: [CustomerService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { 
+  constructor(ngRedux: NgRedux<IAppState>,
+    devTools: DevToolsExtension) {
+      var enhancers = isDevMode() ? [devTools.enhancer()] : [];
+    ngRedux.configureStore(rootReducer, INITIAL_STATE, [], enhancers );
+  }
+
+}
